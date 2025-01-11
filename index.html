@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>__</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #f8e1e7, #fce4ec);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Elementos decorativos flotantes (nubes) */
+        .floating-shape {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: floatShapes 6s infinite;
+        }
+
+        /* Diferentes posiciones y tamaños para las nubes */
+        .floating-shape:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+            width: 90px;
+            height: 60px;
+            border-radius: 50% 50% 45% 45%;
+        }
+
+        .floating-shape:nth-child(2) {
+            top: 30%;
+            left: 70%;
+            animation-delay: 1s;
+            width: 120px;
+            height: 80px;
+            border-radius: 60% 60% 50% 50%;
+        }
+
+        .floating-shape:nth-child(4) {
+            top: 50%;
+            left: 80%;
+            animation-delay: 3s;
+            width: 110px;
+            height: 75px;
+            border-radius: 55% 55% 45% 45%;
+        }
+
+        .floating-shape:nth-child(5) {
+            top: 75%;
+            left: 15%;
+            animation-delay: 4s;
+            width: 100px;
+            height: 70px;
+            border-radius: 60% 60% 45% 45%;
+        }
+
+        @keyframes floatShapes {
+            0%,
+            100% {
+                transform: translateY(-15px);
+            }
+
+            50% {
+                transform: translateY(15px);
+            }
+        }
+
+        /* Sobre */
+        .envelope {
+            width: 300px;
+            height: 200px;
+            background: #fff;
+            border-radius: 10px;
+            position: relative;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            animation: floatEnvelope 3s ease-in-out infinite;
+            cursor: pointer;
+            transition: transform 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .envelope:hover {
+            transform: scale(1.1);
+        }
+
+        /* Tapa del sobre */
+        .flap {
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-top: 100px solid #d8a7b1;
+            z-index: 2;
+        }
+
+        /* Cuerpo del sobre */
+        .bottom {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 70%;
+            background: #fff;
+            border-radius: 0 0 10px 10px;
+            z-index: 1;
+        }
+
+        /* Estilo del mensaje dentro del sobre */
+        .message {
+            position: absolute;
+            font-size: 18px;
+            font-weight: bold;
+            color: #d8a7b1;
+            text-align: center;
+            z-index: 3;
+            top: 50%;
+            transform: translateY(-50%);
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            margin-top: 30px;
+        }
+
+        @keyframes floatEnvelope {
+            0%,
+            100% {
+                transform: translateY(-10px) rotate(-1deg);
+            }
+
+            50% {
+                transform: translateY(10px) rotate(1deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+   
+    <!-- Sobre -->
+    <div class="envelope" onclick="downloadLetter()">
+        <div class="flap"></div>
+        <div class="bottom"></div>
+        <div class="message">Click para abrir</div>
+    </div>
+
+    <script>
+        function downloadLetter() {
+            // Descargar la carta
+            const link = document.createElement('a');
+            link.href = 'Para Yamna___.pdf'; // Cambia por la ruta de tu archivo
+            link.download = 'Para Yamna___.pdf';
+            link.click();
+        }
+    </script>
+</body>
+
+</html>
